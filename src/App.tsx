@@ -4,6 +4,7 @@ import {Home} from "./pages/Home";
 import {About} from "./pages/About";
 import {Contact} from "./pages/Contact";
 import {BookList} from "./pages/BookList";
+import {Book} from "./pages/Book";
 
 function App() {
 
@@ -19,8 +20,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
                 <Route path="/books" element={<BookList />} />
+                <Route path="/books/:id/:img?" element={<Book />} />
+                <Route path="/contact" element={<Contact />} />
             </Routes>
         </>
     );
