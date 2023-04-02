@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 24px;
+    transition: all 100ms ease;
+}
+
+a:hover {
+    color: #86c3cb;
+}
+
+.active {
+    color: #00afc7;
+}
+
+.active:hover {
+    color: #00afc7;
+}
