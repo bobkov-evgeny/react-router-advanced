@@ -1,6 +1,6 @@
 import heroesListData from '../data/characters.json';
 import {Navigate, useParams} from "react-router-dom";
-import {HeroData} from "./HeroesList";
+import {getHeroStatusTextColor, HeroData} from "./HeroesList";
 
 const HeroDetailedInfo = () => {
     const {id} = useParams();
@@ -26,7 +26,7 @@ const HeroDetailedInfo = () => {
             <span>Gender: <span>{gender}</span></span>
             <span>Species: <span>{species}</span></span>
             <span>Type: <span>{type}</span></span>
-            <span>Status: <span>{status}</span></span>
+            <span>Status: <span style={{color: getHeroStatusTextColor(status as any)}}>{status}</span></span>
             <span>Created: <span>{created}</span></span>
         </div>
     );

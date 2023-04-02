@@ -12,18 +12,18 @@ export interface HeroData {
     type: string;
 }
 
+export const getHeroStatusTextColor = (status: 'Alive' | 'Dead' | 'unknown') => {
+    if(status === 'Alive') {
+        return 'green';
+    } else if(status === 'Dead') {
+        return 'red';
+    } else {
+        return 'gray';
+    }
+};
+
 const HeroesList = () => {
     const navigate = useNavigate();
-
-    const getHeroStatusTextColor = (status: 'Alive' | 'Dead' | 'unknown') => {
-        if(status === 'Alive') {
-            return 'green';
-        } else if(status === 'Dead') {
-            return 'red';
-        } else {
-            return 'gray';
-        }
-    };
 
     return (
         <div className='items-container'>

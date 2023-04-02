@@ -54,6 +54,7 @@ body {
 
 .item:hover {
     border-color: #b7da4a;
+    scale: 1.03;
 }
 
 .item img {
