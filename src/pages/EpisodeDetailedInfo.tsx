@@ -1,14 +1,13 @@
 import episodesListData from '../data/episode.json';
-import {useNavigate, useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import {EpisodeData} from "./EpisodesList";
+import heroesListData from "../data/characters.json";
 
 const EpisodeDetailedInfo = () => {
-    const navigate = useNavigate();
     const {id} = useParams();
 
-    if(!id) {
-        navigate(-1);
-        return null;
+    if(!id || (+id - 1) > heroesListData.length) {
+        return <Navigate to='/heroes' />;
     }
 
     const {

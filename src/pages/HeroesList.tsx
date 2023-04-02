@@ -22,7 +22,6 @@ const HeroesList = () => {
                     key={hero.id}
                     className='item'
                     onClick={() => {
-                        console.log(hero.id)
                         navigate(`/heroes/${hero.id}`)
                     }}
                 >

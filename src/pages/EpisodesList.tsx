@@ -19,7 +19,6 @@ const EpisodesList = () => {
                     key={episode.id}
                     className='item'
                     onClick={() => {
-                        console.log(episode.id)
                         navigate(`/episodes/${episode.id}`)
                     }}
                 >
