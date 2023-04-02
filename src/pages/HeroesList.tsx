@@ -15,6 +15,16 @@ export interface HeroData {
 const HeroesList = () => {
     const navigate = useNavigate();
 
+    const getHeroStatusTextColor = (status: 'Alive' | 'Dead' | 'unknown') => {
+        if(status === 'Alive') {
+            return 'green';
+        } else if(status === 'Dead') {
+            return 'red';
+        } else {
+            return 'gray';
+        }
+    };
+
     return (
         <div className='items-container'>
             {(heroesListData as HeroData[]).map(hero => (
@@ -29,7 +39,7 @@ const HeroesList = () => {
 
                     <div className='item-info'>
                         <span>Name: <span className='info-value'>{hero.name}</span></span>
-                        <span>Status: <span className='info-value'>{hero.status}</span></span>
+                        <span>Status: <span className='info-value' style={{color: getHeroStatusTextColor(hero.status as any)}}>{hero.status}</span></span>
                     </div>
 
                 </div>
