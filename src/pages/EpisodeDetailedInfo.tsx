@@ -6,7 +6,7 @@ import heroesListData from "../data/characters.json";
 const EpisodeDetailedInfo = () => {
     const {id} = useParams();
 
-    if(!id || (+id - 1) > heroesListData.length) {
+    if(!id || (Number(id) - 1) > heroesListData.length) {
         return <Navigate to='/heroes' />;
     }
 
