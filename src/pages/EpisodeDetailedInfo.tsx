@@ -3,6 +3,7 @@ import {Navigate, useParams} from "react-router-dom";
 import {EpisodeData} from "./EpisodesList";
 import heroesListData from "../data/characters.json";
 
+
 const EpisodeDetailedInfo = () => {
     const {id} = useParams();
 
