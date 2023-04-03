@@ -1,30 +1,38 @@
 import React from 'react';
-import {Route, Routes, NavLink} from 'react-router-dom';
-import {Home} from "./pages/Home";
-import {About} from "./pages/About";
-import {Contact} from "./pages/Contact";
+import {Route, Routes, useNavigate} from 'react-router-dom';
 import {NotFound} from "./pages/NotFound";
-import BooksRoutes from "./BooksRoutes";
+import NavBar from "./components/NavBar/NavBar";
+import HeroesList from "./pages/HeroesList";
+import LocationsList from "./pages/LocationsList";
+import EpisodesList from "./pages/EpisodesList";
+import HeroDetailedInfo from "./pages/HeroDetailedInfo";
+import LocationDetailedInfo from "./pages/LocationDetailedInfo";
+import EpisodeDetailedInfo from "./pages/EpisodeDetailedInfo";
 
 function App() {
+    const navigate = useNavigate();
 
     return (
-        <>
-            <ul>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/contact">Contact</NavLink></li>
-                <li><NavLink to="/books">BookList</NavLink></li>
-            </ul>
+        <div className="content">
+
+            <div
+                className="logo"
+                onClick={() => {navigate('/')}}
+            />
+
+            <NavBar />
 
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path='/books/*' element={<BooksRoutes />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/" element={<h1>Hi, please select category</h1>} />
+                <Route path="/heroes" element={<HeroesList />} />
+                <Route path='/heroes/:id' element={<HeroDetailedInfo />} />
+                <Route path='/locations' element={<LocationsList />} />
+                <Route path='/locations/:id' element={<LocationDetailedInfo />} />
+                <Route path="/episodes" element={<EpisodesList />} />
+                <Route path="/episodes/:id" element={<EpisodeDetailedInfo />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </>
+        </div>
     );
 }
 
