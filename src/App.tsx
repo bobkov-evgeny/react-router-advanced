@@ -32,7 +32,7 @@ function App() {
                     path="/"
                     element={auth?.user
                         ? <h1>Hello {auth.user}! Select desired category to proceed</h1>
-                        : <h1>Hello! Please login to continue</h1>
+                        : <h1>Hello! Please sign in to continue</h1>
                     }
                 />
                 <Route path="/login" element={<Login />} />
