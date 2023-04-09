@@ -2,14 +2,14 @@ import React, {ReactElement} from 'react';
 import './input.css';
 import {IInputProps, ImportSizeTypes} from "../../types/Input.types";
 
-const Sizes = {
+const SIZE = {
     XS: 12,
     SM: 14,
     MD: 16,
     LG: 18,
     XL: 20
 };
-const BorderRadius = {
+const BORDER_RADIUS = {
     XS: '0.125em',
     SM: '0.25em',
     MD: '0.5em',
@@ -34,7 +34,7 @@ const Input: React.FC<IInputProps> = ({
     const Icon = icon || null;
 
     return (
-        <div className={'input-wrapper'} style={{fontSize: Sizes[size]}}>
+        <div className={'input-wrapper'} style={{fontSize: SIZE[size]}}>
             {label &&
                 <label className={`label${required ? '_required' : ''}`} htmlFor={name}>
                     {label}
@@ -63,7 +63,7 @@ const Input: React.FC<IInputProps> = ({
                     data-invalid={!!error}
                     data-icon={!!icon}
                     style={{
-                        borderRadius: BorderRadius[radius]
+                        borderRadius: BORDER_RADIUS[radius]
                     }}
                 />
             </div>

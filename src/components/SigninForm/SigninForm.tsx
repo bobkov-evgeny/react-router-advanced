@@ -1,7 +1,7 @@
 import React, {ReactElement, useState} from "react";
 import Input from "../Input/Input";
-import './signin-form.css';
 import {FormValues, IFormComponentProps} from "../../types/Form.types";
+import './signin-form.css';
 
 const SigninForm: React.FC<IFormComponentProps> = ({onSubmit}): ReactElement => {
     const [formValues, setFormValues] = useState<FormValues>({});
@@ -12,7 +12,7 @@ const SigninForm: React.FC<IFormComponentProps> = ({onSubmit}): ReactElement => 
         setFormValues(prev => ({
             ...prev,
             [inputEl.name]: inputEl.value
-        }))
+        }));
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
