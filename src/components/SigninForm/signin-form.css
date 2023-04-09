@@ -1,0 +1,40 @@
+.sign-in-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid #e9ebee;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 3px 8px 0 rgba(34, 60, 80, 0.2);
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-title {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 7px;
+    color: #fff;
+    background-color: #00b0c7;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 100ms ease;
+}
+
+.submit-btn:hover {
+    background-color: #b7da4a;
+}
