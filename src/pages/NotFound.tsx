@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react";
 
-export const NotFound = () => {
+const NotFound = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,4 +15,6 @@ export const NotFound = () => {
     return (
         <h1>Not Found</h1>
     )
-}
+};
+
+export default NotFound;

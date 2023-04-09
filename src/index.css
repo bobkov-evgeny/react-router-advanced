@@ -16,7 +16,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     padding: 50px 15% 0 15%;
-    gap: 30px;
+    gap: 100px;
     color: white;
 }
 
@@ -35,7 +35,6 @@ body {
     flex-wrap: wrap;
     color: white;
     gap: 15px;
-    margin-top: 80px;
 }
 
 .item {

@@ -1,4 +1,4 @@
-import locationsListData from '../data/location.json';
+import  locationsListData from '../data/location.json';
 import {useNavigate} from "react-router-dom";
 
 export interface LocationData {
@@ -9,7 +9,7 @@ export interface LocationData {
     dimension: string;
 }
 
-const LocationsList = () => {
+export const LocationsList = () => {
     const navigate = useNavigate();
 
     return (
@@ -29,6 +29,3 @@ const LocationsList = () => {
         </div>
     );
 };
-
-export default LocationsList;
-
