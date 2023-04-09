@@ -1,34 +1,29 @@
-import heroesListData from '../data/characters.json';
-import {Navigate, useParams} from "react-router-dom";
-import {getHeroStatusTextColor, HeroData} from "./HeroesList";
+import {useParams} from "react-router-dom";
+import {getHeroStatusTextColor} from "./HeroesList";
+import {useFetch} from "../hooks/useFetch";
+import Loader from "../components/Loader/Loader";
 
 const HeroDetailedInfo = () => {
-    const {id} = useParams();
-
-    if(!id || (+id - 1) > heroesListData.length) {
-        return <Navigate to='/heroes' />;
-    }
-
-    const {
-        name,
-        image,
-        gender,
-        species,
-        type,
-        status,
-        created
-    }: HeroData = heroesListData[+id - 1];
+    const params = useParams();
+    const {data, isLoading, hasError} = useFetch(`https://rickandmortyapi.com/api/character/${params?.id}`);
 
     return (
-        <div className='item-detailed-info'>
-            <img src={image} alt={name} />
-            <span>Name: <span>{name}</span></span>
-            <span>Gender: <span>{gender}</span></span>
-            <span>Species: <span>{species}</span></span>
-            <span>Type: <span>{type}</span></span>
-            <span>Status: <span style={{color: getHeroStatusTextColor(status as any)}}>{status}</span></span>
-            <span>Created: <span>{created}</span></span>
-        </div>
+        <>
+            {data &&
+                <div className='item-detailed-info'>
+                    <img src={data.image} alt={data.name} />
+                    <span>Name: <span>{data.name}</span></span>
+                    <span>Gender: <span>{data.gender}</span></span>
+                    <span>Species: <span>{data.species}</span></span>
+                    <span>Type: <span>{data.type}</span></span>
+                    <span>Status: <span style={{color: getHeroStatusTextColor(data.status as any)}}>{data.status}</span></span>
+                    <span>Created: <span>{data.created}</span></span>
+                </div>
+            }
+
+            {isLoading && <Loader />}
+            {hasError && <span>Something went wrong...</span>}
+        </>
     );
 };
 

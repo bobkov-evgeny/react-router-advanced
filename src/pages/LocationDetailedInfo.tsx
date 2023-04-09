@@ -1,29 +1,25 @@
-import locationsListdata from '../data/location.json';
-import {Navigate, useParams} from "react-router-dom";
-import {LocationData} from "./LocationsList";
-import heroesListData from "../data/characters.json";
+import {useParams} from "react-router-dom";
+import {useFetch} from "../hooks/useFetch";
+import Loader from "../components/Loader/Loader";
 
 const LocationDetailedInfo = () => {
-    const {id} = useParams();
-
-    if(!id || (+id - 1) > heroesListData.length) {
-        return <Navigate to='/heroes' />;
-    }
-
-    const {
-        name,
-        type,
-        dimension,
-        created
-    }: LocationData = locationsListdata[+id - 1];
+    const params = useParams();
+    const {data, isLoading, hasError} = useFetch(`https://rickandmortyapi.com/api/location/${params?.id}`);
 
     return (
-        <div className='item-detailed-info'>
-            <span>Location: <span>{name}</span></span>
-            <span>Type: <span>{type}</span></span>
-            <span>Dimension: <span>{dimension}</span></span>
-            <span>Created: <span>{created}</span></span>
-        </div>
+        <>
+            {data &&
+                <div className='item-detailed-info'>
+                    <span>Location: <span>{data.name}</span></span>
+                    <span>Type: <span>{data.type}</span></span>
+                    <span>Dimension: <span>{data.dimension}</span></span>
+                    <span>Created: <span>{data.created}</span></span>
+                </div>
+            }
+
+            {isLoading && <Loader />}
+            {hasError && <span>Something went wrong...</span>}
+        </>
     );
 };
 
