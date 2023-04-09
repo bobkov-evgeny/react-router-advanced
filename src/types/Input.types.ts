@@ -1,5 +1,3 @@
-import {FormValues} from "./Form.types";
-
 export enum ImportSizeTypes {
     XS = 'XS',
     SM = 'SM',
@@ -21,8 +19,4 @@ export interface IInputProps {
     required?: boolean;
     disabled?: boolean;
     icon?: any;
-}
-
-export interface IRadioGroupProps {
-    formValues: FormValues;
 }

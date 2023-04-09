@@ -5,7 +5,7 @@ const MainLayout = () => {
 
     return (
        <Outlet />
-    )
+    );
 };
 
 export default MainLayout;

@@ -1,5 +1,4 @@
 import {useNavigate} from "react-router-dom";
-import {HeroData} from "./HeroesList";
 import {useFetchInfiniteScrollData} from "../hooks/useFetchInfiniteScrollData";
 import Loader from "../components/Loader/Loader";
 
@@ -11,7 +10,7 @@ export interface LocationData {
     dimension: string;
 }
 
-export const LocationsList = () => {
+const LocationsList = () => {
     const navigate = useNavigate();
 
     const {
@@ -23,7 +22,7 @@ export const LocationsList = () => {
 
     return (
         <div className='items-container'>
-            {data.length &&(data as HeroData[]).map((location, index) => (
+            {data.length &&(data as LocationData[]).map((location, index) => (
                 <div
                     key={location.id}
                     ref={data.length === index + 1 ? lastNodeRef : null}
@@ -39,3 +38,5 @@ export const LocationsList = () => {
         </div>
     );
 };
+
+export default LocationsList

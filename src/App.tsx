@@ -10,9 +10,7 @@ import Loader from "./components/Loader/Loader";
 const Login = lazy(() => import("./pages/Login"));
 const HeroesList = lazy(() => import("./pages/HeroesList"));
 const HeroDetailedInfo = lazy(() => import("./pages/HeroDetailedInfo"));
-const LocationsList = lazy(() => import("./pages/LocationsList").then(module => ({
-    default: module.LocationsList
-})));
+const LocationsList = lazy(() => import("./pages/LocationsList"));
 const LocationDetailedInfo = lazy(() => import("./pages/LocationDetailedInfo"));
 const EpisodesList = lazy(() => import("./pages/EpisodesList"));
 const EpisodeDetailedInfo = lazy(() => import("./pages/EpisodeDetailedInfo"));

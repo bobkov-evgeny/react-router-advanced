@@ -20,4 +20,4 @@ export const useLastNodeRef = (loading: boolean, hasMoreData: boolean, onChange:
             observer.current.observe(node);
         }
     }, [loading, hasMoreData, onChange]);
-}
+};

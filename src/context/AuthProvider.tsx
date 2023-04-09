@@ -6,7 +6,7 @@ interface IAuthContextValue {
     signOut: (callback: () => void) => void
 }
 
-const AuthContext = createContext<IAuthContextValue | null>(null)
+const AuthContext = createContext<IAuthContextValue | null>(null);
 
 export function useAuth(){
     return useContext(AuthContext);
@@ -20,23 +20,23 @@ export const AuthProvider: React.FC<any> = ({children}) => {
         setUser(newUser);
         localStorage.setItem('user', newUser)
         callback();
-    }
+    };
 
     const signOut = (callback: () => void) => {
         setUser(null);
         localStorage.removeItem('user')
         callback();
-    }
+    };
 
     const value = {
         user,
         signIn,
         signOut
-    }
+    };
 
     return (
         <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
