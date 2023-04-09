@@ -1,7 +1,7 @@
 import React, {ReactElement, useState} from "react";
 import Input from "../Input/Input";
 import {FormValues, IFormComponentProps} from "../../types/Form.types";
-import './signin-form.css';
+import './SignInForm.styles.css';
 
 const SigninForm: React.FC<IFormComponentProps> = ({onSubmit}): ReactElement => {
     const [formValues, setFormValues] = useState<FormValues>({});

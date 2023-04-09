@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
-import './NavBar.css';
+import './NavBar.styles.css';
 import {useAuth} from "../../context/AuthProvider";
 
 const NavBar = () => {

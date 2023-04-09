@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
-import './input.css';
 import {IInputProps, ImportSizeTypes} from "../../types/Input.types";
+import './input.styles.css';
 
 const SIZE = {
     XS: 12,
