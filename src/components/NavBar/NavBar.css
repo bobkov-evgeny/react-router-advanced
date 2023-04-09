@@ -25,3 +25,20 @@ a:hover {
 .active:hover {
     color: #00afc7;
 }
+
+.auth-btn {
+    border: 2px solid #aad647;
+    outline: none;
+    height: 40px;
+    width: 100px;
+    background: #00afc7;
+    border-radius: 8px;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+}
+
+.auth-btn:hover {
+    background: #aad647;
+}

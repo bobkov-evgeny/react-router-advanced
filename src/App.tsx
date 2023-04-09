@@ -1,11 +1,10 @@
-import React, {Suspense, lazy, useState, useRef, useCallback} from 'react';
+import React, {Suspense, lazy} from 'react';
 import {Route, Routes, useNavigate} from 'react-router-dom';
 import PrivateRoute from "./components/PrivateRoute";
 import MainLayout from "./layout/MainLayout";
 import {useAuth} from "./context/AuthProvider";
 import NavBar from "./components/NavBar/NavBar";
 import ErrorBoundary from "./components/ErrorBoundary";
-import {useSearch} from "./hooks/useSearch";
 import Loader from "./components/Loader/Loader";
 
 const Login = lazy(() => import("./pages/Login"));
@@ -22,37 +21,6 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 function App() {
     const navigate = useNavigate();
     const auth = useAuth();
-    const [query, setQuery] = useState('');
-    const [pageNumber, setPageNumber] = useState(1);
-    const {
-        loading,
-        error,
-        data,
-        hasMoreData
-    } = useSearch(query, pageNumber);
-    const observer = useRef<IntersectionObserver>();
-
-    const lastNodeRef: any = useCallback((node: Element) => {
-        if(loading) return;
-        if(observer.current) {
-            observer.current.disconnect();
-        }
-
-        observer.current = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting && hasMoreData) {
-                setPageNumber(prev => prev + 1);
-            }
-        });
-
-        if(node) {
-            observer.current.observe(node);
-        }
-    }, [loading, hasMoreData]);
-
-    const handleChange = (e: any) => {
-        setQuery(e.target.value);
-        setPageNumber(1);
-    }
 
     return (
         <div className="content">
@@ -62,25 +30,8 @@ function App() {
                     onClick={() => {navigate('/')}}
                 />
 
-
                 <NavBar />
             </header>
-            
-            {/*<input onChange={handleChange} />*/}
-
-            {/*{data.map((item, index)=> {*/}
-            {/*    if(data.length === index + 1) {*/}
-            {/*        return (*/}
-            {/*            <span ref={lastNodeRef} style={{color: 'red'}} key={item}>{item}</span>*/}
-            {/*        )*/}
-            {/*    }*/}
-            {/*    return (*/}
-            {/*        <span key={item}>{item}</span>*/}
-            {/*    )*/}
-            {/*})}*/}
-
-            {/*{loading && <span>Loading</span>}*/}
-            {/*{error && <span>Error</span>}*/}
 
             <ErrorBoundary>
                 <Suspense fallback={<Loader />}>
@@ -89,7 +40,7 @@ function App() {
                             path="/"
                             element={auth?.user
                                 ? <h1>Hello {auth.user}! Select desired category to proceed</h1>
-                                : <h1>Hello! Please sign in to continue</h1>
+                                : <h1>Please sign in to continue</h1>
                             }
                         />
                         <Route path="/login" element={<Login />} />

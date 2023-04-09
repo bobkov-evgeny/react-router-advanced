@@ -20,9 +20,7 @@ const Login = () => {
     };
 
     return (
-        <div className='login-page'>
-            <SigninForm onSubmit={handleLogin} />
-        </div>
+        <SigninForm onSubmit={handleLogin} />
     );
 };
 

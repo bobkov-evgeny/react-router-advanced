@@ -1,5 +1,7 @@
-import  locationsListData from '../data/location.json';
 import {useNavigate} from "react-router-dom";
+import {HeroData} from "./HeroesList";
+import {useFetchInfiniteScrollData} from "../hooks/useFetchInfiniteScrollData";
+import Loader from "../components/Loader/Loader";
 
 export interface LocationData {
     created: string;
@@ -12,20 +14,28 @@ export interface LocationData {
 export const LocationsList = () => {
     const navigate = useNavigate();
 
+    const {
+        lastNodeRef,
+        isLoading,
+        hasError,
+        data,
+    } = useFetchInfiniteScrollData('https://rickandmortyapi.com/api/location');
+
     return (
         <div className='items-container'>
-            {(locationsListData as LocationData[]).map(location => (
+            {data.length &&(data as HeroData[]).map((location, index) => (
                 <div
                     key={location.id}
+                    ref={data.length === index + 1 ? lastNodeRef : null}
                     className='item'
-                    onClick={() => {
-                        console.log(location.id)
-                        navigate(`/locations/${location.id}`)
-                    }}
+                    onClick={() => navigate(`/locations/${location.id}`)}
                 >
                     <span>Location: <span className='info-value'>{location.name}</span></span>
                 </div>
             ))}
+
+            {isLoading && <Loader />}
+            {hasError && <h1>Something went wrong...</h1>}
         </div>
     );
 };

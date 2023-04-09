@@ -1,30 +1,25 @@
-import episodesListData from '../data/episode.json';
-import {Navigate, useParams} from "react-router-dom";
-import {EpisodeData} from "./EpisodesList";
-import heroesListData from "../data/characters.json";
-
+import {useParams} from "react-router-dom";
+import {useFetch} from "../hooks/useFetch";
+import Loader from "../components/Loader/Loader";
 
 const EpisodeDetailedInfo = () => {
-    const {id} = useParams();
-
-    if(!id || (Number(id) - 1) > heroesListData.length) {
-        return <Navigate to='/heroes' />;
-    }
-
-    const {
-        name,
-        episode,
-        air_date,
-        created
-    }: EpisodeData = episodesListData[+id - 1];
+    const params = useParams();
+    const {data, isLoading, hasError} = useFetch(`https://rickandmortyapi.com/api/episode/${params?.id}`);
 
     return (
-        <div className='item-detailed-info'>
-            <span>Episode: <span>{episode}</span></span>
-            <span>Name: <span>{name}</span></span>
-            <span>Air date: <span>{air_date}</span></span>
-            <span>Created: <span>{created}</span></span>
-        </div>
+        <>
+            {data &&
+                <div className='item-detailed-info'>
+                    <span>Episode: <span>{data.episode}</span></span>
+                    <span>Name: <span>{data.name}</span></span>
+                    <span>Air date: <span>{data.air_date}</span></span>
+                    <span>Created: <span>{data.created}</span></span>
+                </div>
+            }
+
+            {isLoading && <Loader />}
+            {hasError && <span>Something went wrong...</span>}
+        </>
     );
 };
 

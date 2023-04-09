@@ -11,7 +11,7 @@ const NavBar = () => {
         auth?.signOut(() => {
             navigate('/');
         });
-    }
+    };
 
     const handleClick = () => {
         if (!auth?.user) {
@@ -19,7 +19,7 @@ const NavBar = () => {
         } else {
             handleSignOut();
         }
-    }
+    };
 
     return (
         <div className='navbar'>
@@ -35,7 +35,9 @@ const NavBar = () => {
                 Episodes
             </NavLink>
 
-            <button onClick={handleClick}>{auth?.user ? 'Sign out' : 'Sign in'}</button>
+            <button className='auth-btn' onClick={handleClick}>
+                {auth?.user ? 'Sign out' : 'Sign in'}
+            </button>
         </div>
     );
 };
